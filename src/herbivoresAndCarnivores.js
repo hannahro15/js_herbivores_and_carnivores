@@ -3,10 +3,13 @@
 class Animal {
   static alive = [];
 
-  constructor(health, name) {
+  constructor(health = 100, name) {
     this.health = health;
     this.name = name;
-    Animal.alive.push(this);
+
+    if (this.health > 0) {
+      Animal.alive.push(this);
+    }
   }
 }
 
@@ -20,7 +23,6 @@ class Herbivore extends Animal {
     this.hidden = !this.hidden;
   }
 }
-
 class Carnivore extends Animal {
   constructor(name) {
     super(100, name);
@@ -34,7 +36,7 @@ class Carnivore extends Animal {
         const index = Animal.alive.indexOf(target);
 
         if (index > -1) {
-          Animal.alive.splice(index, 1);
+          Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
         }
       }
     }
