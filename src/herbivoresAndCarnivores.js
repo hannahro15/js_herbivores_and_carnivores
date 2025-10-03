@@ -3,7 +3,7 @@
 class Animal {
   static alive = [];
 
-  constructor(health = 100, name) {
+  constructor(name, health = 100) {
     this.health = health;
     this.name = name;
 
@@ -15,17 +15,17 @@ class Animal {
 
 class Herbivore extends Animal {
   constructor(name) {
-    super(100, name);
+    super(name, 100);
     this.hidden = false;
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 class Carnivore extends Animal {
   constructor(name) {
-    super(100, name);
+    super(name, 100);
   }
 
   bite(target) {
